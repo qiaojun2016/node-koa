@@ -6,7 +6,7 @@ module.exports = {
   test: {
     client: 'mysql',
     version: '5.7',
-    connection: 'postgres://root:root@81.70.196.191:3306/testDB',
+    connection: 'mysql://root:root@81.70.196.191:3306/testDB',
     migrations: {
       directory: path.join(BASE_PATH, 'migrations')
     },
@@ -17,7 +17,7 @@ module.exports = {
   development: {
     client: 'mysql',
     version: '5.7',
-    connection: 'postgres://root:root@81.70.196.191:3306/testDB',
+    connection: 'mysql://root:root@81.70.196.191:3306/testDB',
     migrations: {
       directory: path.join(BASE_PATH, 'migrations')
     },
