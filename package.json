@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./src/server/index.js",
-    "test": "node ./node_modules/mocha/bin/_mocha"
+    "test": "node ./node_modules/mocha/bin/_mocha --timeout 10000" 
   },
   "keywords": [],
   "author": "Michael Herman",
