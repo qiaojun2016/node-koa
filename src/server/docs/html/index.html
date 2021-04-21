@@ -1,0 +1,40 @@
+<h2>Nginx 代理本地服务</h2>
+<p><em>我想代理服务器上一个本地Node 服务 <code>http://localhost:3000/</code> 对外访问是 <code>http://tfdream.cn/api</code></em></p>
+<pre><code>tfdream.cn/api  ---&gt; http://localhost:3000/
+tfdream.cn/api/users  ---&gt; http://localhost:3000/users
+</code></pre>
+<pre><code>cd  /etc/nginx/conf.d
+vim xxx.conf
+</code></pre>
+<p>输入</p>
+<pre><code class="language-shell">server {
+    listen  80;
+    server_name  tfdream.cn;
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:3000/;
+    }
+}
+</code></pre>
+<p><strong>注意</strong> : <code>/api/</code> 不要 写成 <code>/api</code>  proxy_pass末尾加 <code>/</code></p>
+<h2>Daily Worker</h2>
+<p>使用WorkManager实现一个每天的周期性的任务.在响应的 Worker里完成一次任务重新调用dailyWorker即可。</p>
+<pre><code class="language-kotlin">  private fun dailyWorker(context: Context) {
+            val currentDate = Calendar.getInstance()
+
+            val dueDate = Calendar.getInstance()
+            // Set Execution around 05:00:00 AM
+            dueDate.set(Calendar.HOUR_OF_DAY, 5)
+            dueDate.set(Calendar.MINUTE, 0)
+            dueDate.set(Calendar.SECOND, 0)
+            if (dueDate.before(currentDate)) {
+                dueDate.add(Calendar.HOUR_OF_DAY, 24)
+            }
+            val timeDiff = dueDate.timeInMillis  - currentDate.timeInMillis
+            val dailyWorkRequest = OneTimeWorkRequestBuilder&lt;LogUploadWorker&gt;()
+                .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+                .build()
+            WorkManager.getInstance(context).enqueue(dailyWorkRequest)
+        }
+
+</code></pre>
