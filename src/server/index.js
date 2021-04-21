@@ -2,14 +2,16 @@ const koa = require('koa')
 const path = require('path')
 const bodyParser = require('koa-bodyparser')
 const indexRoutes = require('./routes/index');
+const ocrRoutes = require('./routes/ocr')
 const moviesRoutes = require('./routes/movies');
 const fs = require('fs');
 const app = new koa();
 const PORT = 1337;
 
-app.use(bodyParser())
+app.use(bodyParser({formLimit: "5MB"}))
 app.use(indexRoutes.routes());
 app.use(moviesRoutes.routes());
+app.use(ocrRoutes.routes());
 
 /**
  * markdown test

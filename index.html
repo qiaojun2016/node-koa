@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <script>
+        const GET_ACCESS_TOKEN = "https://aip.baidubce.com/oauth/2.0/token"
+        const getAccessToken = (client_id, client_secret) => {
+            axios.get(`${GET_ACCESS_TOKEN}?grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}&`)
+                .then(res => {
+                    console.log(res.data);
+                })
+            
+        }
+
+        const Key = "oMj1mHkAmqCEPyN7a4zf905B"
+            const SecretKey = "WWpiv7yjXH1I6A2IuDQQMd6BpAI4LdyL"
+            getAccessToken(Key, SecretKey)
+    </script>
+</body>
+
+</html>

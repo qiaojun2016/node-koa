@@ -15,11 +15,14 @@
     "mocha": "3.5.0"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "knex": "^0.95.4",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
     "markdown-it": "^12.0.4",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "qs": "^6.10.1",
+    "urlencode": "^1.1.0"
   }
 }
