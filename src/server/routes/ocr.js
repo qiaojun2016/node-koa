@@ -10,15 +10,15 @@ const path = require('path')
 var AipOcrClient = require("baidu-aip-sdk").ocr;
 
 // 设置APPID/AK/SK
-var APP_ID = "24033894";
-var API_KEY = "oMj1mHkAmqCEPyN7a4zf905B";
-var SECRET_KEY = "WWpiv7yjXH1I6A2IuDQQMd6BpAI4LdyL";
+var APP_ID = "24034099";
+var API_KEY = "mWotFfB5OUIKbZlg52j2fTO4";
+var SECRET_KEY = "4loTowzZGOvrrD4GY4esOlr1i44hwIBo";
 
 // 新建一个对象，建议只保存一个对象调用服务接口
 var client = new AipOcrClient(APP_ID, API_KEY, SECRET_KEY);
 /*
 var image = fs.readFileSync(path.resolve(__dirname, "example1.jpg")).toString("base64");
-client.webImage(image).then(function (result) {
+client.generalBasic(image).then(function (result) {
   console.log(JSON.stringify(result));
 }).catch(function (err) {
   // 如果发生网络错误
@@ -46,7 +46,7 @@ router.get(BASE_URL, async (ctx) => {
 
 
 router.post(`${BASE_URL}/general_basic`, async (ctx) => {
-  const data  = await client.webImage(ctx.request.body.image)
+  const data  = await client.accurateBasic(ctx.request.body.image)
   console.log(data);
   var code = ocrResParse(data, (word) => {
     word = word.toUpperCase()
