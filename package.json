@@ -15,7 +15,9 @@
     "mocha": "3.5.0"
   },
   "dependencies": {
+    "@koa/cors": "^3.1.0",
     "axios": "^0.21.1",
+    "baidu-aip-sdk": "^2.4.6",
     "knex": "^0.95.4",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
